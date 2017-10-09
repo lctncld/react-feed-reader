@@ -1,0 +1,9 @@
+---
+env:
+  browser: true
+extends: airbnb
+plugins:
+  - class-property
+rules:
+  react/jsx-tag-spacing: 0
+  class-property/rule-name: 2
