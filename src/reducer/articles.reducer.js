@@ -10,7 +10,6 @@ const articlesReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
-        selectedFeed: action.payload.name,
       };
     case Actions.FETCH_ARTICLES_SUCCESS:
       return {
