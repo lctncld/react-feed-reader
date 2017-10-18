@@ -8,7 +8,6 @@ import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-r
 import createHistory from 'history/createBrowserHistory';
 import callApiMiddleware from './middleware/callApiMiddleware';
 import reducers from './reducer/index.reducer';
-import { fetchFeeds } from './actionCreators/feeds.actionCreators';
 import FeedListContainer from './container/FeedListContainer';
 import FeedViewContainer from './container/FeedViewContainer';
 
@@ -26,8 +25,6 @@ function App() {
       callApiMiddleware,
     ),
   );
-
-  store.dispatch(fetchFeeds());
 
   return (
     <Provider store={store}>

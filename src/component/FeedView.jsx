@@ -14,10 +14,11 @@ class FeedView extends React.Component {
   }
 
   render() {
-    if (!this.props.articles || this.props.articles.length === 0) {
+    const articles = this.props.articles;
+    if (!articles || articles.length === 0) {
       return <FeedViewNoMatch path={this.props.match.params.name} />
     }
-    const elements = this.props.articles.map((post, index) => <Post {...post} key={index} />);
+    const elements = articles.map((post, index) => <Post {...post} key={index} />);
     return <div>{elements}</div>;
   }
 }
