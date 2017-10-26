@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../App.css';
 
 class FeedList extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.onMount();
   }
 

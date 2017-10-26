@@ -10,7 +10,6 @@ import callApiMiddleware from './middleware/callApiMiddleware';
 import reducers from './reducer/index.reducer';
 import FeedListContainer from './container/FeedListContainer';
 import FeedViewContainer from './container/FeedViewContainer';
-import './App.css';
 
 function App() {
   const history = createHistory();
@@ -30,7 +29,7 @@ function App() {
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <div className="FeedApp">
+        <div className='FeedApp'>
           <Route path="/" component={FeedListContainer} />
           <Route path="/feed/:name" component={FeedViewContainer} />
         </div>
