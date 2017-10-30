@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css';
+import { Input, Label, Menu } from 'semantic-ui-react'
+import style from '../Style';
+import MenuItem from './MenuItem';
+import MenuItemContainer from '../container/MenuItemContainer';
 
 class FeedList extends React.Component {
+
   componentDidMount() {
     this.props.onMount();
   }
@@ -10,16 +14,12 @@ class FeedList extends React.Component {
   render() {
     const { feedList } = this.props;
     const elements = feedList.map((name, index) =>
-      <div className="sidebar__element" key={index}>
-        <Link
-          className="sidebar__element__link"
-          to={`/feed/${name}`}
-          onClick={() => this.props.onClick(name)}
-        >{name}</Link>
-      </div>
+      <Link to={`/feed/${name}`} onClick={() => this.props.onClick(name)} key={index}>
+        <MenuItemContainer name={name} selected={this.props.selected === name} />
+      </Link>
     );
     return (
-      <div className="sidebar">{elements}</div>
+      <Menu vertical fixed='left' style={style.menu}>{elements}</Menu>
     );
   }
 }

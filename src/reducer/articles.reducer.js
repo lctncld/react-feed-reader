@@ -17,6 +17,11 @@ const articlesReducer = (state = initialState, action) => {
         isLoading: false,
         [action.payload.name]: action.payload.value,
       }
+      case Actions.FETCH_ARTICLES_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+      }
     default:
       return state;
   }

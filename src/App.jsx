@@ -3,13 +3,15 @@ import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import { Route } from 'react-router-dom';
-import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import callApiMiddleware from './middleware/callApiMiddleware';
 import reducers from './reducer/index.reducer';
 import FeedListContainer from './container/FeedListContainer';
 import FeedViewContainer from './container/FeedViewContainer';
+import { Container } from 'semantic-ui-react';
+import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
+
 
 function App() {
   const history = createHistory();
@@ -21,18 +23,18 @@ function App() {
     applyMiddleware(
       logger,
       thunk,
-      routerMiddleware(history),
       callApiMiddleware,
+      routerMiddleware(history),
     ),
   );
 
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <div className='FeedApp'>
+        <Container >
           <Route path="/" component={FeedListContainer} />
           <Route path="/feed/:name" component={FeedViewContainer} />
-        </div>
+          </Container>
       </ConnectedRouter>
     </Provider>
   );

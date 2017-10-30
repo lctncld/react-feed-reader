@@ -4,9 +4,13 @@ import FeedView from '../component/FeedView';
 
 const getLastParamFromPath = (path) => path.split('/').pop();
 
-const mapState = (state, ownProps) => ({
-  articles: state.articles[getLastParamFromPath(state.router.location.pathname)],
-});
+const mapState = state => {
+  const articles = state.articles[getLastParamFromPath(state.router.location.pathname)];
+  return {
+    articles: articles,
+    isLoading: state.articles.isLoading,
+  }
+}
 
 const mapDispatch = (dispatch, ownProps) => ({
   onMount: () => {
