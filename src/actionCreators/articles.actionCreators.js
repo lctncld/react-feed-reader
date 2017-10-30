@@ -7,7 +7,7 @@ export const fetchArticles = (name) => ({
     Actions.FETCH_ARTICLES_SUCCESS,
     Actions.FETCH_ARTICLES_FAILURE,
   ],
-  shouldCallApi: state => !state.articles.isLoaded,
+  shouldCallApi: state => !state.articles[name],
   api: () => fetch(`http://localhost:4000/api/v1/feeds/${name}`)
     .then(response => response.json())
     .then(json => ({ payload: {name: name, value: json} })),
